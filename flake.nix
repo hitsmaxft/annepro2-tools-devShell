@@ -10,8 +10,11 @@
   flake-utils.lib.eachDefaultSystem( system:
   let
     overlay = final: prev: {
-      anne2protools = anne2protools.defaultPackage.${system};
+      #anne2pro-tools = anne2protools.packages.${system}.anneprot2-tools;
+      anne2pro-tools = anne2protools.defaultPackage.${system};
     };
+
+    # overlays tools into pkgs
     pkgs = import nixpkgs {
       inherit system;
       overlays = [overlay];
